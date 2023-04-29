@@ -1,8 +1,17 @@
 const mongoose = require("mongoose");
 
 const SubjectSchema = new mongoose.Schema({
-  subjectName: {type:String, unique:true, required: true},
-  teacher: {type: mongoose.Schema.Types.ObjectId, ref: "Teacher"}
+  subjectName: { type: String, required: true },
+  typeOfSubject: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "TypeOfSubject",
+    required: false,
+  },
+  teacher: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Teacher",
+    required: false,
+  },
 });
 
-export default mongoose.model("Subject", SubjectSchema);
+module.exports = mongoose.model("Subject", SubjectSchema);
