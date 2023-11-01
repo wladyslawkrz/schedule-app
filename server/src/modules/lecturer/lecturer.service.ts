@@ -27,7 +27,7 @@ export class LecturerService {
   async update(id: number, lecturerData: LecturerDto) {
     await this.lecturerRepository.update(id, lecturerData);
 
-    return this.lecturerRepository.findOne({ where: { id } });
+    return await this.lecturerRepository.findOne({ where: { id } });
   }
 
   async remove(id: number) {

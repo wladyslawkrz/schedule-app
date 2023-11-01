@@ -1,4 +1,20 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateScheduleDto } from './create-schedule.dto';
+import { IsBoolean, IsEnum, IsInt, IsOptional } from 'class-validator';
+import { DayOfWeek, LessonTime } from 'src/common/enums';
 
-export class UpdateScheduleDto extends PartialType(CreateScheduleDto) {}
+export class UpdateScheduleDto {
+  @IsInt()
+  @IsOptional()
+  subjectId: number;
+
+  @IsBoolean()
+  @IsOptional()
+  isTopWeek: boolean;
+
+  @IsEnum(DayOfWeek)
+  @IsOptional()
+  dayOfWeek: DayOfWeek;
+
+  @IsEnum(LessonTime)
+  @IsOptional()
+  lessonTime: LessonTime;
+}

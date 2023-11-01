@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { typeOrmDBProviders } from 'src/config/database.providers';
 
+@Global()
 @Module({
   providers: [...typeOrmDBProviders],
   exports: [...typeOrmDBProviders],
